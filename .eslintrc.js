@@ -1,8 +1,12 @@
 module.exports = {
-  root: true,
+  root: true, // 表示当前目录为根目录
   env: {
     node: true,
   },
+  globals: {
+    withDefaults: 'readonly'
+  },
+  // ESLint 中基础配置需要继承的配置
   extends: [
     "plugin:vue/vue3-essential",
     "eslint:recommended",
@@ -13,19 +17,20 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2020,
   },
+  // 错误规则：off(0) warn(1) error(2)
   rules: {
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
+    // 关闭 no-used 检查
+    "@typescript-eslint/no-unused-vars": "off",
   },
-  overrides: [
-    {
-      files: [
-        "**/__tests__/*.{j,t}s?(x)",
-        "**/tests/unit/**/*.spec.{j,t}s?(x)",
-      ],
-      env: {
-        jest: true,
-      },
+  overrides: [{
+    files: [
+      "**/__tests__/*.{j,t}s?(x)",
+      "**/tests/unit/**/*.spec.{j,t}s?(x)",
+    ],
+    env: {
+      jest: true,
     },
-  ],
+  }, ],
 };

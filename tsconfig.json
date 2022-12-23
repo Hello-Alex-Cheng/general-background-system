@@ -14,7 +14,8 @@
     "types": [
       "webpack-env",
       "jest",
-      "naive-ui/volar"
+      "naive-ui/volar",
+      "element-plus/global"
     ],
     "paths": {
       "@/*": [
