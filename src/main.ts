@@ -9,7 +9,8 @@ import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 
 // 全局样式文件
-import '@/assets/scss/index.scss'
+// import '@/assets/scss/index.scss'
+import '@/styles/index.scss'
 
 // 导入 SvgIcon
 import installIcons from '@/icons'

@@ -23,20 +23,6 @@ console.log(instance?.appContext.config.globalProperties)
 
 #app {
   background-color: slategray;
-  height: 100vh;
-
-  .header {
-    display: flex;
-    background-color: antiquewhite;
-  }
-
-  .icon {
-    display: inline-block;
-    width: 48px;
-    height: 33px;
-    @include bg-image('logo');
-    background-size: 100%;
-  }
 
   .footer {
     width: 100%;

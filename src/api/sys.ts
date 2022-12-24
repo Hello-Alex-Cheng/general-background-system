@@ -5,8 +5,15 @@ export const login = (data: {
   password: string
 }): Promise<any> => {
   return request({
-    url: '/list',
+    url: '/login',
     method: 'GET'
     // data
+  })
+}
+
+export const getUserInfo = (): Promise<any> => {
+  return request({
+    url: '/userinfo',
+    method: 'GET'
   })
 }

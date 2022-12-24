@@ -1,14 +1,17 @@
 import router from './router'
 import store from './store'
+import { getUserInfo } from '@/api/sys'
 
 const whiteList = ['/login']
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   // 判断token是否存在
   if (store.getters.token) {
     if (to.path === '/login') {
       next('/')
     } else {
+      await store.dispatch('user/getUserInfo')
+
       next()
     }
   } else {

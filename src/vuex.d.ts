@@ -8,6 +8,7 @@ declare module '@vue/runtime-core' {
 
     user: {
       token: string
+      userinfo: any
     }
   }
 

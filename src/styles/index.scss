@@ -1,0 +1,19 @@
+@import './reset.scss';
+@import './variables.scss';
+@import './mixin.scss';
+@import './sidebar.scss';
+
+#app {
+  height: 100%;
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: ' ';
+    clear: both;
+    height: 0;
+  }
+}
