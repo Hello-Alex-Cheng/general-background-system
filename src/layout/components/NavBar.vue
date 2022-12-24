@@ -15,9 +15,12 @@
             <router-link to="/">
               <el-dropdown-item> 主页 </el-dropdown-item>
             </router-link>
-            <a target="_blank" href="">
-              <el-dropdown-item>Vue3</el-dropdown-item>
-            </a>
+            <router-link to="/test1">
+              <el-dropdown-item> Test1 </el-dropdown-item>
+            </router-link>
+            <router-link to="/test2">
+              <el-dropdown-item> Test2 </el-dropdown-item>
+            </router-link>
             <el-dropdown-item divided @click="logout"> 退出 </el-dropdown-item>
           </el-dropdown-menu>
         </template>

@@ -1,5 +1,6 @@
 import axios from 'axios'
 import store from '@/store'
+import { isCheckTimeout } from '@/utils/auth'
 import { ElMessage } from 'element-plus'
 
 const service = axios.create({
@@ -10,6 +11,14 @@ const service = axios.create({
 service.interceptors.request.use(
   config => {
     if (store.getters.token) {
+      // 在接口请求之前，判断 token 是否已经失效
+      if (isCheckTimeout()) {
+        store.dispatch('user/logout')
+
+        // 失败的话，会走到 interceptors.response 的 error 方法。
+        return Promise.reject(new Error('token 已失效'))
+      }
+
       config.headers.Authorization = `Baerer ${store.getters.token}`
     }
 
@@ -33,7 +42,22 @@ service.interceptors.response.use(
     }
   },
   error => {
-    ElMessage.error(error.message) // 提示错误信息
+    if (
+      error.response &&
+      error.response.data &&
+      error.response.data.code === 401
+    ) {
+      store.dispatch('user/logout')
+    }
+
+    if (error.response && error.response.data && error.response.data.message) {
+      ElMessage.error(error.response.data.message) // 提示错误信息
+    } else {
+      ElMessage.error(error.message)
+    }
+
+    console.log('errorerrorerrorerror', error.response)
+
     return Promise.reject(error)
   }
 )

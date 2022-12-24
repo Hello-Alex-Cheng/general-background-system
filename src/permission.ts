@@ -1,6 +1,5 @@
 import router from './router'
 import store from './store'
-import { getUserInfo } from '@/api/sys'
 
 const whiteList = ['/login']
 
@@ -10,7 +9,9 @@ router.beforeEach(async (to, from, next) => {
     if (to.path === '/login') {
       next('/')
     } else {
-      await store.dispatch('user/getUserInfo')
+      if (!store.getters.hasUserInfo) {
+        await store.dispatch('user/getUserInfo')
+      }
 
       next()
     }
