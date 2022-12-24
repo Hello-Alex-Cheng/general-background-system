@@ -14,6 +14,9 @@ import '@/assets/scss/index.scss'
 // 导入 SvgIcon
 import installIcons from '@/icons'
 
+// 权限控制
+import './permission'
+
 const app = createApp(App)
 
 app.config.globalProperties.appName = 'alex.cheng'

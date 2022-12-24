@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
 import user from './modules/user'
+import getters from './getters'
 
 export default createStore({
   state() {
@@ -7,6 +8,7 @@ export default createStore({
       globalName: 'Hello_AlexCc'
     }
   },
+  getters,
   modules: {
     user
   }

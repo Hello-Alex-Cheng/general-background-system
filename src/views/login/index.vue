@@ -52,6 +52,7 @@ import { View, Hide } from '@element-plus/icons-vue'
 import SvgIcon from '@/components/SvgIcon/index.vue'
 import type { FormInstance, FormRules } from 'element-plus'
 import { useStore } from 'vuex'
+import router from '@/router'
 
 const ruleFormRef = ref<FormInstance>()
 
@@ -81,6 +82,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
         .dispatch('user/login', user.value)
         .then(res => {
           console.log('login res', res)
+          router.replace('/')
         })
         .catch(err => {
           console.log('err ', err)
