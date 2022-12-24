@@ -23,6 +23,8 @@ module.exports = {
     "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
     // 关闭 no-used 检查
     "@typescript-eslint/no-unused-vars": "off",
+    // 函数参数必须定义类型
+    "@typescript-eslint/explicit-module-boundary-types": "off",
   },
   overrides: [{
     files: [

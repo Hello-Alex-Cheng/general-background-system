@@ -2,7 +2,7 @@
   <div class="login-container">
     <el-form class="login-form" ref="ruleFormRef" :model="user" :rules="rules">
       <div class="title-container">
-        <h3 class="title">用户登录</h3>
+        <h3 class="title">用户登录 {{ $store.state.globalName }}</h3>
       </div>
       <el-form-item prop="username">
         <span class="svg-container">
@@ -40,6 +40,8 @@
       >
         登录
       </el-button>
+
+      <p>token: {{ $store.state.user.token || '暂无Token' }}</p>
     </el-form>
   </div>
 </template>
@@ -48,8 +50,8 @@
 import { ref } from 'vue'
 import { View, Hide } from '@element-plus/icons-vue'
 import SvgIcon from '@/components/SvgIcon/index.vue'
-
 import type { FormInstance, FormRules } from 'element-plus'
+import { useStore } from 'vuex'
 
 const ruleFormRef = ref<FormInstance>()
 
@@ -69,11 +71,20 @@ const rules = ref<FormRules>({
   ]
 })
 
+const store = useStore()
+
 const submitForm = async (formEl: FormInstance | undefined) => {
   if (!formEl) return
   await formEl.validate((valid, fields) => {
     if (valid) {
-      console.log('submit!', user)
+      store
+        .dispatch('user/login', user.value)
+        .then(res => {
+          console.log('login res', res)
+        })
+        .catch(err => {
+          console.log('err ', err)
+        })
     } else {
       console.log('error submit!', fields)
     }

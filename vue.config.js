@@ -6,6 +6,22 @@ function resolve(dir) {
 }
 
 module.exports = {
+  devServer: {
+    // 配置反向代理
+    proxy: {
+      // 当地址中有/api的时候会触发代理机制
+      '/api': {
+        // 要代理的服务器地址  这里不用写 api
+        // target: 'https://jsonplaceholder.typicode.com/',
+        target: 'http://localhost:9999',
+        changeOrigin: true, // 是否跨域
+        pathRewrite: {
+          // 必须得带上,否则，整整的请求中就会带上 '/api'，'https://jsonplaceholder.typicode.com/api/users/1'
+          '^/api': ''
+        }
+      }
+    }
+  },
   chainWebpack(config) {
     // 使用了 config.module.rule('svg') 方法来获取对 SVG 文件的处理规则。
     // 然后，它使用了 exclude 属性来添加一个排除规则，这个规则会排除 resolve('src/icons') 目录中的所有文件。

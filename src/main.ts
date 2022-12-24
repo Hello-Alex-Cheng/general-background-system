@@ -3,6 +3,7 @@ import 'vfonts/Lato.css'
 import 'vfonts/FiraCode.css'
 import App from './App.vue'
 import router from './router'
+import store from './store/index'
 
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
@@ -24,10 +25,13 @@ app.component('my-component', {
   }
 })
 
+console.log('环境变量: ', process.env)
+
 // 注册全局的 Icon 组件
 installIcons(app)
 
 app.use(ElementPlus)
 app.use(router)
+app.use(store)
 
 app.mount('#app')
