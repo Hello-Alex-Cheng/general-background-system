@@ -108,8 +108,17 @@ const publicRoutes = [
   {
     path: '/',
     component: () => import('@/layout/index.vue'),
-    redirect: '/test1',
+    redirect: '/profile',
     children: [
+      {
+        path: '/profile',
+        name: 'profile',
+        component: () => import('@/views/profile/index.vue'),
+        meta: {
+          title: 'profile',
+          icon: 'user'
+        }
+      },
       {
         path: '/test1',
         component: () => import('@/views/test/index1.vue')
