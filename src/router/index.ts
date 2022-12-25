@@ -111,11 +111,11 @@ const publicRoutes = [
     redirect: '/test1',
     children: [
       {
-        path: 'test1',
+        path: '/test1',
         component: () => import('@/views/test/index1.vue')
       },
       {
-        path: 'test2',
+        path: '/test2',
         component: () => import('@/views/test/index2.vue')
       },
       {
