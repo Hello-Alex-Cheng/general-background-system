@@ -19,10 +19,12 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
 import SidebarMenu from './SidebarMenu.vue'
+
+const logHeight = 144
 </script>
 <style scoped lang="scss">
 .logo-container {
-  height: 44px;
+  height: v-bind(logHeight) + px;
   padding: 10px 0 22px 0;
   display: flex;
   align-items: center;
