@@ -1,16 +1,21 @@
 import { createI18n } from 'vue-i18n'
 import { getItem } from '@/utils/storage'
 import { LANG } from '@/constants'
+import store from '@/store'
+import localZh from './lang/zh'
+import localEn from './lang/en'
 
 const messages = {
   en: {
     message: {
-      logo: 'Hello_AlexCc'
+      logo: 'Hello_AlexCc',
+      ...localEn
     }
   },
   zh: {
     message: {
-      logo: '你好_AlexCc'
+      logo: '你好_AlexCc',
+      ...localZh
     }
   }
 }
@@ -20,7 +25,7 @@ const i18n = createI18n({
   legacy: false,
   // 全局注入 $t 函数
   globalInjection: true,
-  locale: (getItem(LANG) || 'zh') as string,
+  locale: store && store.getters && store.getters.language,
   fallbackLocale: 'en',
   messages
 })
