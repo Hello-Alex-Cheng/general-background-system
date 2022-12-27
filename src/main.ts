@@ -4,6 +4,7 @@ import 'vfonts/FiraCode.css'
 import App from './App.vue'
 import router from './router'
 import store from './store/index'
+import i18n from './i18n'
 
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
@@ -37,5 +38,6 @@ installIcons(app)
 app.use(ElementPlus)
 app.use(router)
 app.use(store)
+app.use(i18n)
 
 app.mount('#app')

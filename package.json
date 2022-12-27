@@ -23,6 +23,7 @@
     "throttle-debounce": "^3.0.1",
     "vant": "^3.1.0-beta.0",
     "vue": "^3.2.45",
+    "vue-i18n": "^9.3.0-beta.11",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
   },
