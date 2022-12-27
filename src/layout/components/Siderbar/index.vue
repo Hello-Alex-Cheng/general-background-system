@@ -7,7 +7,7 @@
         src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
       />
       <h1 class="logo-title" v-if="$store.getters.sidebarOpened">
-        {{ $t('message.logo') }}
+        {{ $t('msg.logo') }}
       </h1>
     </div>
     <el-scrollbar>

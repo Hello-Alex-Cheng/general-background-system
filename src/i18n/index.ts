@@ -1,19 +1,17 @@
 import { createI18n } from 'vue-i18n'
-import { getItem } from '@/utils/storage'
-import { LANG } from '@/constants'
 import store from '@/store'
 import localZh from './lang/zh'
 import localEn from './lang/en'
 
 const messages = {
   en: {
-    message: {
+    msg: {
       logo: 'Hello_AlexCc',
       ...localEn
     }
   },
   zh: {
-    message: {
+    msg: {
       logo: '你好_AlexCc',
       ...localZh
     }

@@ -1,5 +1,4 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-
 import layout from '@/layout/index.vue'
 
 /**
@@ -118,14 +117,6 @@ const publicRoutes = [
           title: 'profile',
           icon: 'user'
         }
-      },
-      {
-        path: '/test1',
-        component: () => import('@/views/test/index1.vue')
-      },
-      {
-        path: '/test2',
-        component: () => import('@/views/test/index2.vue')
       },
       {
         path: '/404',

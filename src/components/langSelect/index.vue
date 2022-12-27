@@ -5,7 +5,7 @@
     @command="handleSetLanguage"
   >
     <div>
-      <el-tooltip content="国际化" :effect="'dark'">
+      <el-tooltip :content="$t('msg.navBar.lang')" :effect="'dark'">
         <svg-icon icon="language" />
       </el-tooltip>
     </div>
@@ -26,6 +26,7 @@
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 import { useI18n } from 'vue-i18n'
+import { ElMessage } from 'element-plus'
 
 const i18n = useI18n()
 const store = useStore()
@@ -34,6 +35,7 @@ const language = computed(() => store.getters.language)
 const handleSetLanguage = (value: string) => {
   i18n.locale.value = value
   store.commit('app/setLanguage', value)
+  ElMessage.success(i18n.t('msg.toast.switchLangSuccess'))
 }
 </script>
 <style scoped></style>

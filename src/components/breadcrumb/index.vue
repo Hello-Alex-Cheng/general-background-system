@@ -7,11 +7,11 @@
       >
         <!-- 不可点击项 -->
         <span v-if="index === breadcrumbData.length - 1" class="no-redirect">{{
-          item.meta && item.meta.title
+          generateTitle((item.meta && item.meta.title) as string)
         }}</span>
         <!-- 可点击项 -->
         <a v-else class="redirect" @click.prevent="onLinkClick(item)">{{
-          item.meta && item.meta.title
+          generateTitle((item.meta && item.meta.title) as string)
         }}</a>
       </el-breadcrumb-item>
     </transition-group>
@@ -22,6 +22,7 @@
 import { ref, watch } from 'vue'
 import { useRoute, useRouter, RouteRecordRaw } from 'vue-router'
 import { useStore } from 'vuex'
+import { generateTitle } from '@/utils/i18n'
 
 const breadcrumbData = ref<RouteRecordRaw[]>([]) // 存放计算出的面包屑数据
 

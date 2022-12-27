@@ -2,7 +2,9 @@
   <div class="login-container">
     <el-form class="login-form" ref="ruleFormRef" :model="user" :rules="rules">
       <div class="title-container">
-        <h3 class="title">用户登录 {{ $store.state.globalName }}</h3>
+        <h3 class="title">
+          {{ $t('msg.login.title') }} {{ $store.state.globalName }}
+        </h3>
       </div>
       <el-form-item prop="username">
         <span class="svg-container">
@@ -38,10 +40,10 @@
         style="width: 100%; margin-bottom: 30px"
         @click="submitForm(ruleFormRef)"
       >
-        登录
+        {{ $t('msg.login.loginBtn') }}
       </el-button>
 
-      <p>token: {{ $store.state.user.token || '暂无Token' }}</p>
+      <div class="tips" v-html="$t('msg.login.desc')"></div>
     </el-form>
   </div>
 </template>
@@ -53,8 +55,11 @@ import SvgIcon from '@/components/SvgIcon/index.vue'
 import type { FormInstance, FormRules } from 'element-plus'
 import { useStore } from 'vuex'
 import router from '@/router'
+import { useI18n } from 'vue-i18n'
 
 const ruleFormRef = ref<FormInstance>()
+
+const i18n = useI18n()
 
 const user = ref({
   username: 'super-admin',
@@ -65,10 +70,21 @@ const user = ref({
 const isPwd = ref('')
 
 const rules = ref<FormRules>({
-  username: [{ required: true, message: '用户名不能为空', trigger: 'blur' }],
+  username: [
+    {
+      required: true,
+      message: i18n.t('msg.login.usernameRule'),
+      trigger: 'blur'
+    }
+  ],
   password: [
     { required: true, message: '密码不能为空', trigger: 'blur' },
-    { min: 3, max: 6, message: '密码长度必须在 3 ~ 6 之间', trigger: 'blur' }
+    {
+      min: 3,
+      max: 6,
+      message: i18n.t('msg.login.passwordRule'),
+      trigger: 'blur'
+    }
   ]
 })
 

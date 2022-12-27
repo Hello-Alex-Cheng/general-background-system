@@ -22,7 +22,7 @@ console.log(instance?.appContext.config.globalProperties)
 @import '@/assets/scss/mixin.scss';
 
 #app {
-  background-color: slategray;
+  background-color: #ddd;
 
   .footer {
     width: 100%;
@@ -32,7 +32,7 @@ console.log(instance?.appContext.config.globalProperties)
 
     a {
       text-decoration: none;
-      color: #ccc;
+      color: #999;
     }
   }
 }
