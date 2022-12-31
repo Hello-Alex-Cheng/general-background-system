@@ -34,8 +34,6 @@ const styleExternalIcon = computed(() => ({
 }))
 
 const iconName = computed(() => `#icon-${props.icon}`)
-
-console.log('iconName ', iconName)
 </script>
 <style scoped>
 .svg-icon {

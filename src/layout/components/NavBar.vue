@@ -10,6 +10,8 @@
       <!-- 国际化 -->
       <lang-select class="right-menu-item hover-effect" />
 
+      <theme-select />
+
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -42,6 +44,7 @@ import { Tools } from '@element-plus/icons-vue'
 import Hamburger from '@/components/hamburger/index.vue'
 import Breadcrumb from '@/components/breadcrumb/index.vue'
 import LangSelect from '@/components/langSelect/index.vue'
+import ThemeSelect from '@/components/themeSelect/index.vue'
 
 const store = useStore()
 
