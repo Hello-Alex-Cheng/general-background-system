@@ -3,15 +3,15 @@
     <router-view></router-view>
 
     <div class="footer">
-      <a href="https://beian.miit.gov.cn/" target="_blank"
-        >京ICP备2022010298号-1</a
-      >
+      <a href="https://beian.miit.gov.cn/" target="_blank">
+        京ICP备2022010298号-1
+      </a>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { defineComponent, ref, getCurrentInstance } from 'vue'
+import { computed, getCurrentInstance } from 'vue'
 import { generateNewStyle, writeNewStyle } from '@/utils/theme'
 import { useStore } from 'vuex'
 
@@ -20,6 +20,8 @@ const instance = getCurrentInstance()
 console.log(instance?.appContext.config.globalProperties)
 
 const store = useStore()
+const themeColor = computed(() => store.getters.cssVars.menuBg)
+
 generateNewStyle(store.getters.mainColor).then(newStyleText => {
   writeNewStyle(newStyleText)
 })
@@ -29,8 +31,7 @@ generateNewStyle(store.getters.mainColor).then(newStyleText => {
 @import '@/assets/scss/mixin.scss';
 
 #app {
-  background-color: #ddd;
-
+  background-color: rgb(246, 248, 250);
   .footer {
     width: 100%;
     position: fixed;
@@ -39,7 +40,7 @@ generateNewStyle(store.getters.mainColor).then(newStyleText => {
 
     a {
       text-decoration: none;
-      color: #999;
+      color: v-bind(themeColor);
     }
   }
 }

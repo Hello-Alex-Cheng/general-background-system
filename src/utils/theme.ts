@@ -56,7 +56,7 @@ export const generateNewStyle = async (primaryColor: string) => {
  * 根据主色生成色值表
  */
 type TFormulaKey = keyof typeof formula
-export const generateColors = (primary: string) => {
+export const generateColors = (primary: string | undefined) => {
   if (!primary) return
   const colors: { [key: string]: string } = {
     primary

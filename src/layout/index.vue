@@ -6,7 +6,7 @@
     <!-- 左侧 menu -->
     <siderbar
       class="sidebar-container"
-      :style="{ backgroundColor: variables.menuBg }"
+      :style="{ backgroundColor: $store.getters.cssVars.menuBg }"
     ></siderbar>
 
     <div class="main-container">

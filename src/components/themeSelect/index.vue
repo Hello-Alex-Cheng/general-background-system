@@ -35,8 +35,4 @@ const handleSetTheme = () => {
   selectColorVisible.value = true
 }
 </script>
-<style scoped lang="scss">
-.change-theme {
-  font-size: 24px;
-}
-</style>
+<style scoped lang="scss"></style>
