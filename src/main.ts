@@ -8,6 +8,7 @@ import i18n from './i18n'
 
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
+// import '@/styles/cover-element-plus.scss'
 
 // Element Plus 国际化语言
 import zhCn from 'element-plus/es/locale/lang/zh-cn'

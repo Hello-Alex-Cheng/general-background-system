@@ -12,10 +12,17 @@
 
 <script lang="ts" setup>
 import { defineComponent, ref, getCurrentInstance } from 'vue'
+import { generateNewStyle, writeNewStyle } from '@/utils/theme'
+import { useStore } from 'vuex'
 
 // 获取全局属性上的值
 const instance = getCurrentInstance()
 console.log(instance?.appContext.config.globalProperties)
+
+const store = useStore()
+generateNewStyle(store.getters.mainColor).then(newStyleText => {
+  writeNewStyle(newStyleText)
+})
 </script>
 
 <style lang="scss">

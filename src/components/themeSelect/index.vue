@@ -1,5 +1,10 @@
 <template>
-  <el-dropdown trigger="click" class="theme" @command="handleSetTheme">
+  <el-dropdown
+    v-bind="$attrs"
+    trigger="click"
+    class="theme"
+    @command="handleSetTheme"
+  >
     <div>
       <el-tooltip :content="$t('msg.navBar.themeChange')">
         <svg-icon icon="change-theme" />
@@ -26,8 +31,12 @@ import SelectColor from './components/SelectColor.vue'
 
 const selectColorVisible = ref(false)
 
-const handleSetTheme = (command: string) => {
+const handleSetTheme = () => {
   selectColorVisible.value = true
 }
 </script>
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.change-theme {
+  font-size: 24px;
+}
+</style>

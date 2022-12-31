@@ -11,9 +11,9 @@
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="closed">{{ $t('msg.universal.cancel') }}</el-button>
-        <el-button type="primary" @click="comfirm">{{
-          $t('msg.universal.confirm')
-        }}</el-button>
+        <el-button type="primary" :loading="loading" @click="comfirm">
+          {{ $t('msg.universal.confirm') }}
+        </el-button>
       </span>
     </template>
   </el-dialog>
@@ -22,6 +22,7 @@
 <script setup lang="ts">
 import { ref, reactive, defineProps, defineEmits } from 'vue'
 import { useStore } from 'vuex'
+import { generateNewStyle, writeNewStyle } from '@/utils/theme'
 
 defineProps({
   modelValue: {
@@ -52,14 +53,8 @@ const predefineColors = ref([
 
 const store = useStore()
 
-console.log('mainColor', store.getters.mainColor)
-
 // 默认色值
 const mColor = ref(store.getters.mainColor)
-
-setTimeout(() => {
-  console.log('setTimeout mainColor', store.getters.mainColor)
-}, 100)
 
 /**
  * 关闭
@@ -74,10 +69,20 @@ const closed = () => {
  * 2. 保存最新的主题色
  * 3. 关闭 dialog
  */
+const loading = ref(false)
 const comfirm = async () => {
-  // 3. 关闭 dialog
+  //  mColor.value: rgba(0, 186, 189, 1)
   store.commit('theme/setMainColor', mColor.value)
-  closed()
+
+  loading.value = true
+  generateNewStyle(mColor.value)
+    .then(style => {
+      writeNewStyle(style)
+      closed()
+    })
+    .finally(() => {
+      loading.value = false
+    })
 }
 </script>
 <style scoped lang="scss">

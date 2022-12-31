@@ -10,7 +10,7 @@
       <!-- 国际化 -->
       <lang-select class="right-menu-item hover-effect" />
 
-      <theme-select />
+      <theme-select class="right-menu-item hover-effect" />
 
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">

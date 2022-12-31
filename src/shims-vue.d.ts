@@ -12,3 +12,5 @@ declare module '*.scss' {
   }
   export default css
 }
+
+declare module 'css-color-function';

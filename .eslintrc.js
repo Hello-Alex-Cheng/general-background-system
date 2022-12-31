@@ -25,7 +25,8 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": "off",
     // 函数参数必须定义类型
     "@typescript-eslint/explicit-module-boundary-types": 0,
-    "@typescript-eslint/ban-ts-comment": 0
+    "@typescript-eslint/ban-ts-comment": 0,
+    '@typescript-eslint/no-var-requires': 0
   },
   overrides: [{
     files: [
