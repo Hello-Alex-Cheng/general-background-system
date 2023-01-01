@@ -10,7 +10,11 @@
       <!-- 国际化 -->
       <lang-select class="right-menu-item hover-effect" />
 
+      <!-- 主题色 -->
       <theme-select class="right-menu-item hover-effect" />
+
+      <!-- 全屏切换 -->
+      <screenfull class="right-menu-item hover-effect" />
 
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
@@ -45,6 +49,7 @@ import Hamburger from '@/components/hamburger/index.vue'
 import Breadcrumb from '@/components/breadcrumb/index.vue'
 import LangSelect from '@/components/langSelect/index.vue'
 import ThemeSelect from '@/components/themeSelect/index.vue'
+import Screenfull from '@/components/screenfull/index.vue'
 
 const store = useStore()
 
