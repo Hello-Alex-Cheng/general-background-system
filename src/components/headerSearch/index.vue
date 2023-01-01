@@ -27,11 +27,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, watch, ComputedRef } from 'vue'
 import { filterRouters } from '@/utils/route'
 import { useRouter } from 'vue-router'
 import Fuse from 'fuse.js'
 import { generateRoutes } from './FuseData'
+import watchSwitchLang from '@/i18n/watchSwitchLang'
 
 const router = useRouter()
 
@@ -42,32 +43,42 @@ const isShow = ref(false)
 const headerSearchSelectRef = ref(null)
 
 // 检索数据源: 和 SidebarMenu 逻辑一样
-const searchPool = computed(() => {
+let searchPool = computed(() => {
   const filterRoutes = filterRouters(router.getRoutes())
   return generateRoutes(filterRoutes)
 })
 
 // 模糊搜索🔍
-const fuse = new Fuse(searchPool.value, {
-  // 是否按优先级进行排序
-  shouldSort: true,
-  // 匹配长度超过这个值的才会被认为是匹配的
-  minMatchCharLength: 1,
-  // 将被搜索的键列表。 这支持嵌套路径、加权搜索、在字符串和对象数组中搜索。
-  // name：搜索的键
-  // weight：对应的权重
-  // 表示我们将用户输入的值，与 title 和 path 进行匹配
-  keys: [
-    {
-      name: 'title',
-      weight: 0.7
-    },
-    {
-      name: 'path',
-      weight: 0.3
-    }
-  ]
-})
+let fuse: any
+const initFuse = (
+  searchPool: {
+    path?: string
+    title?: string[]
+  }[]
+) => {
+  fuse = new Fuse(searchPool, {
+    // 是否按优先级进行排序
+    shouldSort: true,
+    // 匹配长度超过这个值的才会被认为是匹配的
+    minMatchCharLength: 1,
+    // 将被搜索的键列表。 这支持嵌套路径、加权搜索、在字符串和对象数组中搜索。
+    // name：搜索的键
+    // weight：对应的权重
+    // 表示我们将用户输入的值，与 title 和 path 进行匹配
+    keys: [
+      {
+        name: 'title',
+        weight: 0.7
+      },
+      {
+        name: 'path',
+        weight: 0.3
+      }
+    ]
+  })
+}
+
+initFuse(searchPool.value)
 
 const onShowClick = () => {
   isShow.value = !isShow.value
@@ -97,6 +108,32 @@ const querySearch = (value: string) => {
 const onSelectChange = (value: { path: string; title: string[] }) => {
   router.push(value.path)
 }
+
+const onClose = () => {
+  if (headerSearchSelectRef.value) {
+    ;(headerSearchSelectRef.value as HTMLInputElement).blur()
+    isShow.value = false
+    searchOptions.value = []
+  }
+}
+
+// 点击 body，隐藏搜索框
+watch(isShow, value => {
+  if (value) {
+    document.body.addEventListener('click', onClose)
+  } else {
+    document.body.removeEventListener('click', onClose)
+  }
+})
+
+// 监听语言变化，使搜索项兼容国际化
+watchSwitchLang(() => {
+  searchPool = computed(() => {
+    const filterRoutes = filterRouters(router.getRoutes())
+    return generateRoutes(filterRoutes)
+  })
+  initFuse(searchPool.value)
+})
 </script>
 <style scoped lang="scss">
 .header-search {
