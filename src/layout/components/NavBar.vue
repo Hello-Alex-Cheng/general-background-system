@@ -7,6 +7,9 @@
     <breadcrumb class="breadcrumb-container" />
 
     <div class="right-menu">
+      <!-- 搜索 -->
+      <header-search class="right-menu-item hover-effect" />
+
       <!-- 国际化 -->
       <lang-select class="right-menu-item hover-effect" />
 
@@ -50,6 +53,7 @@ import Breadcrumb from '@/components/breadcrumb/index.vue'
 import LangSelect from '@/components/langSelect/index.vue'
 import ThemeSelect from '@/components/themeSelect/index.vue'
 import Screenfull from '@/components/screenfull/index.vue'
+import HeaderSearch from '@/components/headerSearch/index.vue'
 
 const store = useStore()
 
