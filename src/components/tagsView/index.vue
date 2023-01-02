@@ -1,32 +1,42 @@
 <template>
   <div class="tags-view-container">
-    <router-link
-      class="tags-view-item"
-      :class="isActive(tag) ? 'active' : ''"
-      :style="{
-        backgroundColor: isActive(tag) ? $store.getters.cssVars.menuBg : '',
-        borderColor: isActive(tag) ? $store.getters.cssVars.menuBg : ''
-      }"
-      v-for="(tag, index) in $store.getters.tagsViewList"
-      :key="tag.fullPath"
-      :to="{ path: tag.fullPath }"
-    >
-      {{ tag.title }}
-      <el-icon
-        v-show="!isActive(tag)"
-        class="el-icon-close"
-        @click.prevent.stop="onCloseClick(index)"
+    <el-scrollbar class="tags-view-wrapper">
+      <router-link
+        class="tags-view-item"
+        :class="isActive(tag) ? 'active' : ''"
+        :style="{
+          backgroundColor: isActive(tag) ? $store.getters.cssVars.menuBg : '',
+          borderColor: isActive(tag) ? $store.getters.cssVars.menuBg : ''
+        }"
+        v-for="(tag, index) in $store.getters.tagsViewList"
+        :key="tag.fullPath"
+        :to="{ path: tag.fullPath }"
+        @contextmenu.prevent="openMenu($event, index)"
       >
-        <close />
-      </el-icon>
-    </router-link>
+        {{ tag.title }}
+        <el-icon
+          v-show="!isActive(tag)"
+          class="el-icon-close"
+          @click.prevent.stop="onCloseClick(index)"
+        >
+          <close />
+        </el-icon>
+      </router-link>
+    </el-scrollbar>
+    <context-menu
+      v-show="visible"
+      :style="menuStyle"
+      :index="selectIndex"
+    ></context-menu>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref, reactive, watch } from 'vue'
 import { useRoute, RouteLocationNormalizedLoaded } from 'vue-router'
 import { Close } from '@element-plus/icons-vue'
 import { useStore } from 'vuex'
+import ContextMenu from './ContextMenu.vue'
 
 const route = useRoute()
 const store = useStore()
@@ -38,12 +48,40 @@ const isActive = (tag: RouteLocationNormalizedLoaded) => {
   return tag.path === route.path
 }
 
-/**
- * 关闭 tag 的点击事件
- */
+// contextMenu 相关
+const selectIndex = ref(0)
+const visible = ref(false)
+const menuStyle = reactive({
+  left: '0',
+  top: '0'
+})
+
 const onCloseClick = (index: number) => {
-  // close
+  store.commit('app/removeTagsView', {
+    type: 'current',
+    index: index
+  })
 }
+
+const openMenu = (e: MouseEvent, index: number) => {
+  const { x, y } = e
+  menuStyle.left = x + 'px'
+  menuStyle.top = y + 'px'
+  selectIndex.value = index
+  visible.value = true
+}
+
+const closeContextMenu = () => {
+  visible.value = false
+}
+
+watch(visible, () => {
+  if (visible.value) {
+    document.body.addEventListener('click', closeContextMenu)
+  } else {
+    document.body.removeEventListener('click', closeContextMenu)
+  }
+})
 </script>
 
 <style lang="scss" scoped>
