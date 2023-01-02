@@ -29,6 +29,13 @@ export default {
 
         setItem(TAGS_VIEW, state.tagsViewList)
       }
+    },
+    changeTagsView(
+      state: any,
+      { index, tag }: { index: number; tag: RouteRecordRaw }
+    ) {
+      state.tagsViewList[index] = tag
+      setItem(TAGS_VIEW, state.tagsViewList)
     }
   }
 }

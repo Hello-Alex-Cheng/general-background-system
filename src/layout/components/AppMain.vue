@@ -10,6 +10,7 @@ import { useRoute, RouteLocationNormalizedLoaded } from 'vue-router'
 import { isTags } from '@/utils/tags'
 import { useStore } from 'vuex'
 import { generateTitle } from '@/utils/i18n'
+import watchSwitchLang from '@/i18n/watchSwitchLang'
 
 const route = useRoute()
 const store = useStore()
@@ -24,10 +25,26 @@ const getTitle = (route: RouteLocationNormalizedLoaded) => {
     const pathArr = route.path.split('/')
     title = pathArr[pathArr.length - 1]
   } else {
+    // generateTitle 根据 i18n 生成 title
     title = generateTitle(route.meta.title as string)
   }
   return title
 }
+
+// 监听国际化语言变化
+watchSwitchLang(() => {
+  store.getters.tagsViewList.forEach(
+    (route: RouteLocationNormalizedLoaded, index: number) => {
+      store.commit('app/changeTagsView', {
+        index,
+        tag: {
+          ...route,
+          title: getTitle(route)
+        }
+      })
+    }
+  )
+})
 
 watch(
   route,
