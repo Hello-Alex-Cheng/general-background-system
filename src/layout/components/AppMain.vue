@@ -1,6 +1,14 @@
+<!-- [处理基于路由的动态过渡](https://next.router.vuejs.org/zh/guide/advanced/transitions.html#%E5%9F%BA%E4%BA%8E%E8%B7%AF%E7%94%B1%E7%9A%84%E5%8A%A8%E6%80%81%E8%BF%87%E6%B8%A1) -->
+<!-- 官方已经给出了示例代码，结合 `router-view` 和 `transition` 我们可以非常方便的实现这个功能 -->
 <template>
   <div class="app-main">
-    <router-view></router-view>
+    <router-view v-slot="{ Component, route }">
+      <transition name="fade-transform" mode="out-in">
+        <keep-alive>
+          <component :is="Component" :key="route.path" />
+        </keep-alive>
+      </transition>
+    </router-view>
   </div>
 </template>
 
@@ -77,5 +85,20 @@ watch(
   padding: 104px 20px 20px 20px;
   box-sizing: border-box;
   background-color: #fff;
+}
+
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all 0.5s;
+}
+
+.fade-transform-enter-from {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.fade-transform-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
 }
 </style>

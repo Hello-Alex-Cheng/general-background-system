@@ -106,13 +106,14 @@ const publicRoutes = [
   },
   {
     path: '/',
-    component: () => import('@/layout/index.vue'),
+    component: layout,
     redirect: '/profile',
     children: [
       {
         path: '/profile',
         name: 'profile',
-        component: () => import('@/views/profile/index.vue'),
+        component: () =>
+          import(/* webpackChunkName: "profile" */ '@/views/profile/index.vue'),
         meta: {
           title: 'profile',
           icon: 'user'
