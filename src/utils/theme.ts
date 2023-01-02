@@ -21,7 +21,8 @@ export const writeNewStyle = (cssText: string) => {
  */
 type TObject = { [key: string]: string }
 export const generateNewStyle = async (primaryColor: string) => {
-  const colors: TObject = generateColors(primaryColor) as TObject // colors ===> { primary: 'rgba(8, 12, 132, 0.68)', shade-1: '#070b77ad', light-1: '#212490ad', light-2: '#393d9dad', ...... }
+  const colors: TObject = generateColors(primaryColor) as TObject
+  // colors ===> { primary: 'rgba(8, 12, 132, 0.68)', shade-1: '#070b77ad', light-1: '#212490ad', light-2: '#393d9dad', ...... }
 
   // 拿到整个 element plus 样式表，并对需要修改的变量打上了标记
   let cssText = await getOriginalStyle()
@@ -93,13 +94,14 @@ const getOriginalStyle = async () => {
  * 返回 style 的 template
  */
 const getStyleTemplate = (data: string) => {
-  // element-plus 默认色值
+  // element-plus 默认的 primary 色值，我们把每个色值，都替换成我们 formula 中的 key，也就是 shade-* 这些
+  // 替换成成功之后，通过正则，将 primary 相关色值替换成我们想要的色值【colors】
   const colorMap: { [key: string]: string } = {
     '#3a8ee6': 'shade-1',
     '#409eff': 'primary', // element-plus 中含有变量 `--el-color-primary: #409eff`
     '#53a8ff': 'light-1',
     '#66b1ff': 'light-2',
-    '#79bbff': 'light-3',
+    '#79bbff': 'light-3', // --el-color-primary-light-3
     '#8cc5ff': 'light-4',
     '#a0cfff': 'light-5',
     '#b3d8ff': 'light-6',
@@ -115,6 +117,9 @@ const getStyleTemplate = (data: string) => {
 
   // 替换完之后
   // `--el-color-primary: #409eff` 就变成了 `--el-color-primary: primary`
+  // --el-color-primary-light-3: #79bbff;  ==>> --el-color-primary-light-3: light-3
+  // ...
+  // ...
   // `--el-color-primary-light-9: #ecf5ff` 变成了 `--el-color-primary-light-9: light-9`
 
   return data

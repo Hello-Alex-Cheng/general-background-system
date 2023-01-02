@@ -7,14 +7,17 @@
     <siderbar
       class="sidebar-container"
       :style="{ backgroundColor: $store.getters.cssVars.menuBg }"
-    ></siderbar>
+    />
 
     <div class="main-container">
       <div class="fixed-header">
-        <nav-bar></nav-bar>
+        <nav-bar />
+
+        <!-- tag view -->
+        <tags-view />
       </div>
 
-      <app-main></app-main>
+      <app-main />
     </div>
   </div>
 </template>
@@ -24,6 +27,7 @@ import { ref, reactive } from 'vue'
 import Siderbar from './components/Siderbar/index.vue'
 import NavBar from './components/NavBar.vue'
 import AppMain from './components/AppMain.vue'
+import TagsView from '@/components/tagsView/index.vue'
 
 // 导入 variable.scss 中定义的变量
 import variables from '@/styles/variables.scss'

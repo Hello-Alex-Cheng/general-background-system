@@ -29,7 +29,8 @@ const getters = {
   }),
   sidebarOpened: (state: any) => state.app.sidebarOpened,
   language: (state: any) => state.app.language,
-  mainColor: (state: any) => state.theme.mainColor
+  mainColor: (state: any) => state.theme.mainColor,
+  tagsViewList: (state: any) => state.app.tagsViewList
 }
 
 export default getters
