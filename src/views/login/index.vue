@@ -43,7 +43,7 @@
         {{ $t('msg.login.loginBtn') }}
       </el-button>
 
-      <div class="tips" v-html="$t('msg.login.desc')"></div>
+      <!-- <div class="tips" v-html="$t('msg.login.desc')"></div> -->
     </el-form>
   </div>
 </template>

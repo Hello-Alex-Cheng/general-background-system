@@ -45,15 +45,16 @@ import variables from '@/styles/variables.scss'
 }
 
 .fixed-header {
-  position: fixed;
+  position: relative;
   top: 0;
   right: 0;
   z-index: 9;
-  width: calc(100% - #{$sideBarWidth});
+  // width: calc(100% - #{$sideBarWidth});
   transition: width #{$sideBarDuration};
 }
 
 .hideSidebar .fixed-header {
-  width: calc(100% - #{$hideSideBarWidth});
+  // width: calc(100% - #{$hideSideBarWidth});
+  width: 100%;
 }
 </style>

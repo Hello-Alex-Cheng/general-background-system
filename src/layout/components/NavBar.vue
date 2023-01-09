@@ -19,6 +19,9 @@
       <!-- 全屏切换 -->
       <screenfull class="right-menu-item hover-effect" />
 
+      <!-- 引导 -->
+      <guide class="right-menu-item hover-effect" />
+
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -54,6 +57,7 @@ import LangSelect from '@/components/langSelect/index.vue'
 import ThemeSelect from '@/components/themeSelect/index.vue'
 import Screenfull from '@/components/screenfull/index.vue'
 import HeaderSearch from '@/components/headerSearch/index.vue'
+import Guide from '@/components/guide/index.vue'
 
 const store = useStore()
 

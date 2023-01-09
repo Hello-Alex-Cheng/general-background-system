@@ -67,6 +67,18 @@ script-setup 的推出，标记着 setup 函数式语法 正式称为过去式�
     34. 服务器、域名购买与备案标准
     36. 前端项目部署方案
 
+## 服务器配置
+
+接口代理，修改 Nginx配置
+
+/www/server/panel/vhost/nginx/alexcc.top.conf
+
+<!-- 开启代理，将所有 prod-api 开头的接口，代理到 node 服务上 -->
+location /prod-api/
+{
+    proxy_pass http://xxx.xxx.xxx.xx:9999/;
+}
+
 ## Project setup
 ```
 yarn install

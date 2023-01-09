@@ -2773,6 +2773,11 @@ babylon@^6.18.0:
   resolved "https://registry.nlark.com/babylon/download/babylon-6.18.0.tgz"
   integrity sha1-ry87iPpvXB5MY00aD46sT1WzleM=
 
+balanced-match@0.1.0:
+  version "0.1.0"
+  resolved "https://registry.npmmirror.com/balanced-match/-/balanced-match-0.1.0.tgz#b504bd05869b39259dd0c5efc35d843176dccc4a"
+  integrity sha512-4xb6XqAEo3Z+5pEDJz33R8BZXI8FRJU+cDNLdKgDpmnz+pKKRVYLpdv+VvUAC7yUhBMj4izmyt19eCGv1QGV7A==
+
 balanced-match@^1.0.0:
   version "1.0.2"
   resolved "https://registry.nlark.com/balanced-match/download/balanced-match-1.0.2.tgz"
@@ -3459,10 +3464,10 @@ collection-visit@^1.0.0:
     map-visit "^1.0.0"
     object-visit "^1.0.0"
 
-color-convert@^1.9.0, color-convert@^1.9.3:
+color-convert@^1.3.0, color-convert@^1.9.0, color-convert@^1.9.3:
   version "1.9.3"
-  resolved "https://registry.npmmirror.com/color-convert/download/color-convert-1.9.3.tgz"
-  integrity sha1-u3GFBpDh8TZWfeYp0tVHHe2kweg=
+  resolved "https://registry.npmmirror.com/color-convert/-/color-convert-1.9.3.tgz#bb71850690e1f136567de629d2d5471deda4c1e8"
+  integrity sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==
   dependencies:
     color-name "1.1.3"
 
@@ -3483,6 +3488,13 @@ color-name@^1.0.0, color-name@~1.1.4:
   resolved "https://registry.nlark.com/color-name/download/color-name-1.1.4.tgz"
   integrity sha1-wqCah6y95pVD3m9j+jmVyCbFNqI=
 
+color-string@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.npmmirror.com/color-string/-/color-string-0.3.0.tgz#27d46fb67025c5c2fa25993bfbf579e47841b991"
+  integrity sha512-sz29j1bmSDfoAxKIEU6zwoIZXN6BrFbAMIhfYCNyiZXBDuU/aiHlN84lp/xDzL2ubyFhLDobHIlU1X70XRrMDA==
+  dependencies:
+    color-name "^1.0.0"
+
 color-string@^1.6.0:
   version "1.9.0"
   resolved "https://registry.npmmirror.com/color-string/download/color-string-1.9.0.tgz"
@@ -3490,6 +3502,15 @@ color-string@^1.6.0:
   dependencies:
     color-name "^1.0.0"
     simple-swizzle "^0.2.2"
+
+color@^0.11.0:
+  version "0.11.4"
+  resolved "https://registry.npmmirror.com/color/-/color-0.11.4.tgz#6d7b5c74fb65e841cd48792ad1ed5e07b904d764"
+  integrity sha512-Ajpjd8asqZ6EdxQeqGzU5WBhhTfJ/0cA4Wlbre7e5vXfmDSmda7Ov6jeKoru+b0vHcb1CqvuroTHp5zIWzhVMA==
+  dependencies:
+    clone "^1.0.2"
+    color-convert "^1.3.0"
+    color-string "^0.3.0"
 
 color@^3.0.0:
   version "3.2.1"
@@ -3800,6 +3821,16 @@ crypto-browserify@^3.11.0:
     randombytes "^2.0.0"
     randomfill "^1.0.3"
 
+css-color-function@^1.3.3:
+  version "1.3.3"
+  resolved "https://registry.npmmirror.com/css-color-function/-/css-color-function-1.3.3.tgz#8ed24c2c0205073339fafa004bc8c141fccb282e"
+  integrity sha512-YD/WhiRZIYgadwFJ48X5QmlOQ/w8Me4yQI6/eSUoiE8spIFp+S/rGpsAH48iyq/0ZWkCDWqVQKUlQmUzn7BQ9w==
+  dependencies:
+    balanced-match "0.1.0"
+    color "^0.11.0"
+    debug "^3.1.0"
+    rgb "~0.1.0"
+
 css-color-names@0.0.4, css-color-names@^0.0.4:
   version "0.0.4"
   resolved "https://registry.nlark.com/css-color-names/download/css-color-names-0.0.4.tgz"
@@ -4068,9 +4099,9 @@ debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.8:
   dependencies:
     ms "2.0.0"
 
-debug@^3.1.1, debug@^3.2.6:
+debug@^3.1.0, debug@^3.1.1, debug@^3.2.6:
   version "3.2.7"
-  resolved "https://registry.npmmirror.com/debug/download/debug-3.2.7.tgz"
+  resolved "https://registry.npmmirror.com/debug/-/debug-3.2.7.tgz#72580b7e9145fb39b6676f9c5e5fb100b934179a"
   integrity sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==
   dependencies:
     ms "^2.1.1"
@@ -4384,6 +4415,11 @@ dotenv@^8.2.0:
   version "8.6.0"
   resolved "https://registry.npmmirror.com/dotenv/download/dotenv-8.6.0.tgz"
   integrity sha512-IrPdXQsk2BbzvCBGBOTmmSH5SodmqZNt4ERAZDmW4CT+tL8VtvinqywuANaFu4bOMWki16nqf0e4oC0QIaDr/g==
+
+driver.js@^0.9.8:
+  version "0.9.8"
+  resolved "https://registry.npmmirror.com/driver.js/-/driver.js-0.9.8.tgz#4b327f4537b1c9b9fb19419de86174be821ae32a"
+  integrity sha512-bczjyKdX6XmFyCDkwtRmlaORDwfBk1xXmRO0CAe5VwNQTM98aWaG2LAIiIdTe53iV/B7W5lXlIy2xYtf0JRb7Q==
 
 duplexer@^0.1.1:
   version "0.1.2"
@@ -5356,6 +5392,11 @@ functional-red-black-tree@^1.0.1:
   version "1.0.1"
   resolved "https://registry.nlark.com/functional-red-black-tree/download/functional-red-black-tree-1.0.1.tgz"
   integrity sha1-GwqzvVU7Kg1jmdKcDj6gslIHgyc=
+
+fuse.js@^6.4.6:
+  version "6.6.2"
+  resolved "https://registry.npmmirror.com/fuse.js/-/fuse.js-6.6.2.tgz#fe463fed4b98c0226ac3da2856a415576dc9a111"
+  integrity sha512-cJaJkxCCxC8qIIcPBF9yGxY0W/tVZS3uEISDxhYIdtk8OL93pe+6Zj7LjCqVV4dzbqcriOZ+kQ/NE4RXZHsIGA==
 
 gensync@^1.0.0-beta.2:
   version "1.0.0-beta.2"
@@ -9423,10 +9464,20 @@ reusify@^1.0.4:
   resolved "https://registry.nlark.com/reusify/download/reusify-1.0.4.tgz"
   integrity sha1-kNo4Kx4SbvwCFG6QhFqI2xKSXXY=
 
+rgb-hex@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.npmmirror.com/rgb-hex/-/rgb-hex-4.0.0.tgz#02fb1e215e3fe5d070501579a3d2e4fa3c0acec8"
+  integrity sha512-Eg2ev5CiMBnQ9Gpflmqbwbso0CCdISqtVIow7OpYSLN1ULUv2jTB9YieS1DSSn/17AD7KkPWDPzSFzI4GSuu/Q==
+
 rgb-regex@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmmirror.com/rgb-regex/download/rgb-regex-1.0.1.tgz"
   integrity sha1-wODWiC3w4jviVKR16O3UGRX+rrE=
+
+rgb@~0.1.0:
+  version "0.1.0"
+  resolved "https://registry.npmmirror.com/rgb/-/rgb-0.1.0.tgz#be27b291e8feffeac1bd99729721bfa40fc037b5"
+  integrity sha512-F49dXX73a92N09uQkfCp2QjwXpmJcn9/i9PvjmwsSIXUGqRLCf/yx5Q9gRxuLQTq248kakqQuc8GX/U/CxSqlA==
 
 rgba-regex@^1.0.0:
   version "1.0.0"
@@ -9581,6 +9632,11 @@ schema-utils@^2.0.0, schema-utils@^2.5.0, schema-utils@^2.6.1, schema-utils@^2.6
     "@types/json-schema" "^7.0.5"
     ajv "^6.12.4"
     ajv-keywords "^3.5.2"
+
+screenfull@^5.1.0:
+  version "5.2.0"
+  resolved "https://registry.npmmirror.com/screenfull/-/screenfull-5.2.0.tgz#6533d524d30621fc1283b9692146f3f13a93d1ba"
+  integrity sha512-9BakfsO2aUQN2K9Fdbj87RJIEZ82Q9IGim7FqM5OsebfoFC6ZHXgDq/KvniuLTPdeM8wY2o6Dj3WQ7KeQCj3cA==
 
 seemly@^0.3.1, seemly@^0.3.3:
   version "0.3.3"
